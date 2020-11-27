@@ -1,0 +1,259 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="1000.0" style="-fx-background-color: #EAB2B2;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.MapaController">
+   <children>
+      <ImageView fitHeight="148.0" fitWidth="200.0" layoutX="679.0" layoutY="530.0" opacity="0.27">
+         <image>
+            <Image url="@resources/pink.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="186.0" fitWidth="200.0" layoutX="-40.0" layoutY="-28.0">
+         <image>
+            <Image url="@resources/BG.png" />
+         </image>
+      </ImageView>
+      <Pane fx:id="mapa" layoutX="157.0" layoutY="16.0" prefHeight="650.0" prefWidth="650.0">
+         <effect>
+            <DropShadow color="#d95f5f" />
+         </effect></Pane>
+      <VBox layoutX="5.0" layoutY="14.0" prefHeight="673.0" prefWidth="145.0">
+         <children>
+            <Pane prefHeight="107.0" prefWidth="102.0">
+               <children>
+                  <Button layoutX="18.0" mnemonicParsing="false" onAction="#omoguciKretanje" prefHeight="65.0" prefWidth="65.0" style="-fx-background-radius: 100; -fx-background-color: #FEDD55; -fx-border-color: #035755; -fx-border-radius: 100;" textFill="#f32f4b">
+                     <graphic>
+                        <ImageView fitHeight="50.0" fitWidth="45.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@resources/checked.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </Button>
+                  <Label layoutX="-9.0" layoutY="65.0" prefHeight="23.0" prefWidth="141.0" text="OMOGUĆI KRETANJE" textAlignment="CENTER" textFill="#035755" wrapText="true">
+                     <font>
+                        <Font name="System Bold" size="12.0" />
+                     </font>
+                  </Label>
+                  <Button id="ambulance" fx:id="voziloButton" layoutX="18.0" layoutY="93.0" mnemonicParsing="false" onAction="#posaljiVozilo" prefHeight="65.0" prefWidth="65.0" style="-fx-background-radius: 100; -fx-background-color: #FC6278; -fx-border-radius: 100; -fx-border-color: #035755;">
+                     <graphic>
+                        <ImageView fitHeight="50.0" fitWidth="46.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@resources/ambulance.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </Button>
+                  <ImageView fx:id="signal" fitHeight="41.0" fitWidth="28.0" layoutX="77.0" layoutY="93.0" preserveRatio="true" visible="false">
+                     <image>
+                        <Image url="@resources/alert.png" />
+                     </image>
+                     <effect>
+                        <DropShadow blurType="ONE_PASS_BOX" color="#035755" radius="4.75" width="0.0" />
+                     </effect>
+                  </ImageView>
+               </children>
+               <VBox.margin>
+                  <Insets left="20.0" right="20.0" top="10.0" />
+               </VBox.margin>
+            </Pane>
+            <Pane prefHeight="103.0" prefWidth="152.0" style="-fx-graphic: url(&quot;C:\Users\Milica\Desktop\CoronaCity\resources\ambulance.png&quot;);;">
+               <children>
+                  <Label layoutY="43.0" text="POŠALJI VOZILO" textAlignment="RIGHT" textFill="#035755">
+                     <font>
+                        <Font name="System Bold" size="12.0" />
+                     </font>
+                  </Label>
+                  <Button fx:id="statistikaButton" layoutX="18.0" layoutY="63.0" mnemonicParsing="false" onAction="#prikaziStatistiku" prefHeight="65.0" prefWidth="65.0" style="-fx-background-radius: 100; -fx-background-color: #FFED94; -fx-border-color: #035755; -fx-border-radius: 100;" textFill="#f32f4b">
+                     <graphic>
+                        <ImageView fitHeight="50.0" fitWidth="45.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@resources/pie-chart.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </Button>
+               </children>
+               <VBox.margin>
+                  <Insets left="20.0" right="20.0" top="10.0" />
+               </VBox.margin>
+            </Pane>
+            <Pane prefHeight="173.0" prefWidth="109.0">
+               <VBox.margin>
+                  <Insets left="20.0" right="20.0" top="10.0" />
+               </VBox.margin>
+               <children>
+                  <Label layoutX="-16.0" layoutY="14.0" prefHeight="23.0" prefWidth="141.0" text="PREGLEDAJ STATISTIKU" textAlignment="CENTER" textFill="#035755" wrapText="true">
+                     <font>
+                        <Font name="System Bold" size="12.0" />
+                     </font>
+                  </Label>
+                  <Button layoutX="18.0" layoutY="46.0" mnemonicParsing="false" onAction="#stanjeUAmbulantama" prefHeight="65.0" prefWidth="65.0" style="-fx-background-radius: 100; -fx-background-color: #EE9B9C; -fx-border-color: #035755; -fx-border-radius: 100;" textFill="#f32f4b">
+                     <graphic>
+                        <ImageView fitHeight="56.0" fitWidth="45.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@resources/ambulance%20(2).png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </Button>
+                  <Label layoutX="-8.0" layoutY="111.0" prefHeight="41.0" prefWidth="124.0" text="PREGLED STANJA U AMBULANTAMA" textFill="#035755" wrapText="true">
+                     <font>
+                        <Font name="System Bold" size="12.0" />
+                     </font>
+                  </Label>
+                  <Button layoutX="18.0" layoutY="159.0" mnemonicParsing="false" prefHeight="65.0" prefWidth="65.0" style="-fx-background-radius: 100; -fx-background-color: #FFE792; -fx-border-color: #035755; -fx-border-radius: 100;" textFill="#f32f4b">
+                     <graphic>
+                        <ImageView fitHeight="56.0" fitWidth="45.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@resources/pause.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </Button>
+               </children>
+            </Pane>
+            <Pane prefHeight="112.0" prefWidth="102.0">
+               <children>
+                  <Pane layoutY="14.0" prefHeight="228.0" prefWidth="136.0">
+                     <children>
+                        <Label layoutX="-11.0" layoutY="26.0" prefHeight="23.0" prefWidth="141.0" text="ZAUSTAVI SIMULACIJU" textAlignment="CENTER" textFill="#035755" wrapText="true">
+                           <font>
+                              <Font name="System Bold" size="12.0" />
+                           </font>
+                        </Label>
+                        <Button layoutX="18.0" layoutY="49.0" mnemonicParsing="false" prefHeight="65.0" prefWidth="65.0" style="-fx-background-radius: 100; -fx-background-color: #7CC9A8; -fx-border-color: #035755; -fx-border-radius: 100;" textFill="#f32f4b">
+                           <graphic>
+                              <ImageView fitHeight="56.0" fitWidth="45.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@resources/restart.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                        </Button>
+                        <Label layoutX="-11.0" layoutY="114.0" prefHeight="23.0" prefWidth="141.0" text="PONOVNO POKRETANJE" textAlignment="CENTER" textFill="#035755" wrapText="true">
+                           <font>
+                              <Font name="System Bold" size="12.0" />
+                           </font>
+                        </Label>
+                        <Button layoutX="18.0" layoutY="138.0" mnemonicParsing="false" onAction="#zavrsiSimulaciju" prefHeight="65.0" prefWidth="65.0" style="-fx-background-radius: 100; -fx-background-color: #FF314F; -fx-border-color: #035755; -fx-border-radius: 100;" textFill="#f32f4b">
+                           <graphic>
+                              <ImageView fitHeight="56.0" fitWidth="45.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@resources/power-button.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                        </Button>
+                        <Label layoutX="-11.0" layoutY="203.0" prefHeight="23.0" prefWidth="141.0" text="ZAVRŠI SIMULACIJU" textAlignment="CENTER" textFill="#035755" wrapText="true">
+                           <font>
+                              <Font name="System Bold" size="12.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </Pane>
+               </children>
+               <VBox.margin>
+                  <Insets left="20.0" right="20.0" top="10.0" />
+               </VBox.margin>
+            </Pane>
+         </children>
+      </VBox>
+      <ImageView fitHeight="200.0" fitWidth="192.0" layoutX="757.0" layoutY="13.0" opacity="0.17">
+         <image>
+            <Image url="@resources/virus%20(1).png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="111.0" fitWidth="121.0" layoutX="858.0" layoutY="541.0" opacity="0.78" preserveRatio="true">
+         <image>
+            <Image url="@resources/virus%20(1).png" />
+         </image>
+      </ImageView>
+      <ImageView layoutX="221.0" layoutY="617.0" opacity="0.43">
+         <image>
+            <Image url="@resources/virus%20(2).png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="84.0" fitWidth="70.0" layoutX="929.0" layoutY="615.0" opacity="0.74" preserveRatio="true">
+         <image>
+            <Image url="@resources/virus%20(2).png" />
+         </image>
+         <effect>
+            <DropShadow color="#e0ebdf" />
+         </effect>
+      </ImageView>
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#ffe7e7" height="90.0" layoutX="847.0" layoutY="132.0" stroke="#ffe7e7" strokeType="INSIDE" style="-fx-arc-width: 50; -fx-arc-height: 50;" width="144.0">
+         <effect>
+            <DropShadow color="#d95f5f91" />
+         </effect>
+      </Rectangle>
+      <ImageView fitHeight="49.0" fitWidth="57.0" layoutX="929.0" layoutY="134.0" opacity="0.57" rotate="79.7">
+         <image>
+            <Image url="@resources/pink.png" />
+         </image>
+      </ImageView>
+      <Label fx:id="stanjeAmbulanti" alignment="CENTER" layoutX="861.0" layoutY="151.0" prefHeight="49.0" prefWidth="124.0" textAlignment="JUSTIFY" textFill="#fc6278">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+         <padding>
+            <Insets bottom="2.0" top="2.0" />
+         </padding>
+      </Label>
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#ffe7e7" height="272.0" layoutX="847.0" layoutY="255.0" stroke="#ffe7e7" strokeType="INSIDE" style="-fx-arc-width: 50; -fx-arc-height: 50;" width="144.0">
+         <effect>
+            <DropShadow color="#d95f5f91" />
+         </effect>
+      </Rectangle>
+      <TextArea fx:id="kretanjeInfo" layoutX="852.0" layoutY="277.0" prefHeight="228.0" prefWidth="133.0" promptText="Informacije o kretanju stanovnika" stylesheets="@resources/text.css">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+         <effect>
+            <DropShadow blurType="GAUSSIAN" color="#e59a9ac4" />
+         </effect>
+      </TextArea>
+      <ImageView fitHeight="80.0" fitWidth="93.0" layoutX="949.0" layoutY="14.0" opacity="0.23" preserveRatio="true">
+         <image>
+            <Image url="@resources/virus%20(2).png" />
+         </image>
+         <effect>
+            <DropShadow color="#e0ebdf" />
+         </effect>
+      </ImageView>
+   </children>
+</AnchorPane>

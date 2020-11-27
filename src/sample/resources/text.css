@@ -1,0 +1,10 @@
+.text-area {
+    -fx-text-fill: #035755;
+}
+
+.text-field{
+    -fx-text-fill: #FB6C65;    
+}
+.text-field:focused{
+    -fx-focus-color: #108E59;
+}
