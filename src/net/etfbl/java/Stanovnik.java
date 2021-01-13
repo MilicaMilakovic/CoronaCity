@@ -7,12 +7,13 @@ import javafx.scene.layout.BackgroundFill;
 import javafx.scene.paint.Color;
 import sample.MapaController;
 
+import java.io.Serializable;
 import java.util.Calendar;
 import java.util.Random;
 import java.util.Stack;
 import java.util.logging.Level;
 
-public abstract  class Stanovnik extends Thread {
+public abstract  class Stanovnik extends Thread implements Serializable {
 
     protected int id;
     protected String ime;
@@ -35,8 +36,8 @@ public abstract  class Stanovnik extends Thread {
     protected int nextRed, nextKolona;
     protected int pocetniRed, pocetnaKolona;
 
-    private Color boja;
-    public Background background;
+    private transient Color boja;
+    public transient Background background;
     private static MapaController mc;
 
     public Stanovnik(int id, String grupa, Polje[][] mapa) {
@@ -197,7 +198,7 @@ public abstract  class Stanovnik extends Thread {
     @Override
     public void run() {
 
-        while (true) {
+        while (Grad.running) {
 //            System.out.println("run");
             try {
                 sleep(700 + new Random().nextInt(500));

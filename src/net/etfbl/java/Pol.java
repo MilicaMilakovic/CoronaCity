@@ -1,5 +1,7 @@
 package net.etfbl.java;
 
-public enum Pol {
+import java.io.Serializable;
+
+public enum Pol implements Serializable {
     ZENSKI,MUSKI;
 }

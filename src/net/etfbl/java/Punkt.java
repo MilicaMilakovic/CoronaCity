@@ -3,9 +3,10 @@ package net.etfbl.java;
 import javafx.application.Platform;
 import sample.MapaController;
 
+import java.io.Serializable;
 import java.util.logging.Level;
 
-public class Punkt extends Thread{
+public class Punkt extends Thread implements Serializable {
 
     public int red, kolona;
     private static Polje[][] mapa;
@@ -26,7 +27,7 @@ public class Punkt extends Thread{
         catch (Exception e) {
             MyLogger.log(Level.SEVERE,e.getMessage(),e);
         }
-        while (true) {
+        while (Grad.running) {
             for (int i = red - 1; i <= red + 1; i++) {
                 for (int j = kolona - 1; j <= kolona + 1; j++) {
                     if (mapa[i][j].getKuca()==null && !mapa[i][j].getStanovnici().isEmpty()) { //punkt ne uzima u obzir kuce

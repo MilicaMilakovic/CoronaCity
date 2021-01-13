@@ -59,6 +59,14 @@
                <cursor>
                   <Cursor fx:constant="HAND" />
                </cursor></Button>
+            <Button layoutX="149.0" layoutY="424.0" mnemonicParsing="false" onAction="#ponovnoPokretanje" prefHeight="28.0" prefWidth="130.0" stylesheets="@resources/Button.css" text="Pokreni ponovo" textAlignment="RIGHT" textFill="WHITE">
+               <font>
+                  <Font size="14.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Button>
          </children>
       </AnchorPane>
       <ImageView fitHeight="108.0" fitWidth="99.0" layoutX="359.0" layoutY="648.0" opacity="0.18" preserveRatio="true">

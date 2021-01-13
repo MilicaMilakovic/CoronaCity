@@ -1,5 +1,7 @@
 package net.etfbl.java;
 
-public enum Pravac {
+import java.io.Serializable;
+
+public enum Pravac implements Serializable {
     GORE,DOLE,LIJEVO,DESNO;
 }

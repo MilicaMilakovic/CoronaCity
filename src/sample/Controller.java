@@ -15,6 +15,9 @@ import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import net.etfbl.java.*;
 
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.ObjectInputStream;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.Map;
@@ -126,6 +129,23 @@ public class Controller {
             ps.show();
 
             MyLogger.log(Level.WARNING,"Neispravan unos",e);
+        }
+    }
+    public void ponovnoPokretanje()
+    {
+        try(ObjectInputStream ois = new ObjectInputStream(new FileInputStream(new File("grad.ser"))))
+        {
+            SerijalizabilniGrad sg=(SerijalizabilniGrad)ois.readObject();
+            Grad.kuceUGradu=sg.kuceUGradu;
+            Grad.punktoviUGradu=sg.punktoviUGradu;
+            Grad.ambulante=sg.ambulante;
+            Grad.alarmi=sg.alarmi;
+
+            Grad.running=true;
+
+        } catch (Exception e)
+        {
+            e.printStackTrace();
         }
     }
 }

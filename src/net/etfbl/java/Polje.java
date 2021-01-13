@@ -1,10 +1,11 @@
 package net.etfbl.java;
 
 import java.awt.*;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.concurrent.CopyOnWriteArrayList;
 
-public class Polje {
+public class Polje implements Serializable {
 
     private CopyOnWriteArrayList<Stanovnik> stanovnici=new CopyOnWriteArrayList<>();
     private Kuca kuca;

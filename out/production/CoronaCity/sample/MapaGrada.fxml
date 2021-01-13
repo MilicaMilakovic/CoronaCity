@@ -127,7 +127,7 @@
                         <Font name="System Bold" size="12.0" />
                      </font>
                   </Label>
-                  <Button layoutX="18.0" layoutY="159.0" mnemonicParsing="false" prefHeight="65.0" prefWidth="65.0" style="-fx-background-radius: 100; -fx-background-color: #FFE792; -fx-border-color: #035755; -fx-border-radius: 100;" textFill="#f32f4b">
+                  <Button layoutX="18.0" layoutY="159.0" mnemonicParsing="false" onAction="#zaustaviSimulaciju" prefHeight="65.0" prefWidth="65.0" style="-fx-background-radius: 100; -fx-background-color: #FFE792; -fx-border-color: #035755; -fx-border-radius: 100;" textFill="#f32f4b">
                      <graphic>
                         <ImageView fitHeight="56.0" fitWidth="45.0" pickOnBounds="true" preserveRatio="true">
                            <image>
@@ -150,24 +150,7 @@
                               <Font name="System Bold" size="12.0" />
                            </font>
                         </Label>
-                        <Button layoutX="18.0" layoutY="49.0" mnemonicParsing="false" prefHeight="65.0" prefWidth="65.0" style="-fx-background-radius: 100; -fx-background-color: #7CC9A8; -fx-border-color: #035755; -fx-border-radius: 100;" textFill="#f32f4b">
-                           <graphic>
-                              <ImageView fitHeight="56.0" fitWidth="45.0" pickOnBounds="true" preserveRatio="true">
-                                 <image>
-                                    <Image url="@resources/restart.png" />
-                                 </image>
-                              </ImageView>
-                           </graphic>
-                           <cursor>
-                              <Cursor fx:constant="HAND" />
-                           </cursor>
-                        </Button>
-                        <Label layoutX="-11.0" layoutY="114.0" prefHeight="23.0" prefWidth="141.0" text="PONOVNO POKRETANJE" textAlignment="CENTER" textFill="#035755" wrapText="true">
-                           <font>
-                              <Font name="System Bold" size="12.0" />
-                           </font>
-                        </Label>
-                        <Button layoutX="18.0" layoutY="138.0" mnemonicParsing="false" onAction="#zavrsiSimulaciju" prefHeight="65.0" prefWidth="65.0" style="-fx-background-radius: 100; -fx-background-color: #FF314F; -fx-border-color: #035755; -fx-border-radius: 100;" textFill="#f32f4b">
+                        <Button layoutX="20.0" layoutY="59.0" mnemonicParsing="false" onAction="#zavrsiSimulaciju" prefHeight="65.0" prefWidth="65.0" style="-fx-background-radius: 100; -fx-background-color: #FF314F; -fx-border-color: #035755; -fx-border-radius: 100;" textFill="#f32f4b">
                            <graphic>
                               <ImageView fitHeight="56.0" fitWidth="45.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
@@ -179,7 +162,7 @@
                               <Cursor fx:constant="HAND" />
                            </cursor>
                         </Button>
-                        <Label layoutX="-11.0" layoutY="203.0" prefHeight="23.0" prefWidth="141.0" text="ZAVRŠI SIMULACIJU" textAlignment="CENTER" textFill="#035755" wrapText="true">
+                        <Label layoutX="-11.0" layoutY="131.0" prefHeight="23.0" prefWidth="141.0" text="ZAVRŠI SIMULACIJU" textAlignment="CENTER" textFill="#035755" wrapText="true">
                            <font>
                               <Font name="System Bold" size="12.0" />
                            </font>
@@ -201,11 +184,6 @@
       <ImageView fitHeight="111.0" fitWidth="121.0" layoutX="858.0" layoutY="541.0" opacity="0.78" preserveRatio="true">
          <image>
             <Image url="@resources/virus%20(1).png" />
-         </image>
-      </ImageView>
-      <ImageView layoutX="221.0" layoutY="617.0" opacity="0.43">
-         <image>
-            <Image url="@resources/virus%20(2).png" />
          </image>
       </ImageView>
       <ImageView fitHeight="84.0" fitWidth="70.0" layoutX="929.0" layoutY="615.0" opacity="0.74" preserveRatio="true">
@@ -254,6 +232,11 @@
          <effect>
             <DropShadow color="#e0ebdf" />
          </effect>
+      </ImageView>
+      <ImageView fitHeight="158.0" fitWidth="192.0" layoutX="45.0" layoutY="608.0" opacity="0.43" preserveRatio="true">
+         <image>
+            <Image url="@resources/virus%20(2).png" />
+         </image>
       </ImageView>
    </children>
 </AnchorPane>

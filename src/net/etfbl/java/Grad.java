@@ -21,6 +21,7 @@ public class Grad {
     public static Polje[][] mapa;
 
     public static int stari,odrasli,djeca;
+    public static boolean running = true;
 
     public static Background DEFAULT_BACKGROUND = new Background(new BackgroundFill(Color.WHITE, null, null));
 
@@ -209,11 +210,11 @@ public class Grad {
             }
             ++n;
         }
-
         punktoviUGradu.forEach(Thread::start);
         ambulante.forEach(ambulanta -> {
             if(!ambulanta.isAlive())
                 ambulanta.start();
         });
     }
+
 }

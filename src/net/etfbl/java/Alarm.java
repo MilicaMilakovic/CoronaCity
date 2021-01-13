@@ -1,6 +1,8 @@
 package net.etfbl.java;
 
-public class Alarm {
+import java.io.Serializable;
+
+public class Alarm implements Serializable {
 
     private int red,kolona;
     private int kucaId;

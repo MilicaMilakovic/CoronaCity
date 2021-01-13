@@ -14,7 +14,7 @@ import java.util.Random;
 import java.util.concurrent.CopyOnWriteArrayList;
 import java.util.logging.Level;
 
-public class Ambulanta extends Thread {
+public class Ambulanta extends Thread implements Serializable {
 
     public static int count;
 
@@ -138,7 +138,7 @@ public class Ambulanta extends Thread {
 
     public void run()
     {
-        while (true) {
+        while (Grad.running) {
 
              if(!zarazeniStanovnici.isEmpty())
              {

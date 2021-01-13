@@ -12,12 +12,13 @@ import sample.MapaController;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
+import java.io.Serializable;
 import java.util.concurrent.CopyOnWriteArrayList;
 import java.util.logging.Level;
 
 import static java.lang.Thread.sleep;
 
-public class Kuca {
+public class Kuca implements Serializable {
 
     private int id;
     private int count;
@@ -25,9 +26,9 @@ public class Kuca {
     private int red,kolona;
     public volatile boolean zarazena=false;
 
-    public Color fasada;
+    public transient Color fasada;
 
-    public Background background;
+    public transient Background background;
 
     public Kuca(int id, int red, int kolona)
     {
@@ -65,9 +66,6 @@ public class Kuca {
 
         });
         thread.start();
-
-
-
     }
 
     public void dodajUkucana(Stanovnik stanovnik)

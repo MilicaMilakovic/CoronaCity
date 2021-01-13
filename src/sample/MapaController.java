@@ -45,6 +45,7 @@ public class MapaController implements Initializable {
     public TextArea kretanjeInfo=new TextArea();
 
     private static boolean alreadyPressed=false;
+    private static boolean serialization=false;
     private long start,end;
     private  String stanje="" ;
 
@@ -226,7 +227,7 @@ public class MapaController implements Initializable {
     }
     public void zavrsiSimulaciju()
     {
-        if(alreadyPressed)
+        if(alreadyPressed || serialization)
         {
             long end=System.currentTimeMillis();
             File file=new File("SIM-JavaKov-"+System.currentTimeMillis()+".txt");
@@ -260,4 +261,30 @@ public class MapaController implements Initializable {
             System.exit(0);
         }
     }
+
+    public void zaustaviSimulaciju()
+    {
+        Grad.running=false;
+        try{
+            Thread.sleep(1500);
+        } catch (Exception e)
+        {
+            e.printStackTrace();
+        }
+        System.out.println("Svi tredovi zaustavljeni.");
+
+        SerijalizabilniGrad sg= new SerijalizabilniGrad(Grad.kuceUGradu,Grad.alarmi,Grad.ambulante,Grad.punktoviUGradu,Grad.size);
+
+        try(ObjectOutputStream oos=new ObjectOutputStream(new FileOutputStream(new File("grad.ser"))))
+        {
+            oos.writeObject(sg);
+
+        } catch (Exception e)
+        {
+            e.printStackTrace();
+        }
+        serialization = true;
+        zavrsiSimulaciju();
+    }
+
 }
