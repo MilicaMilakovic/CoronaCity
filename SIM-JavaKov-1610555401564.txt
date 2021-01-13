@@ -1,0 +1,16 @@
+Trajanje simulacije u [ms]:83055
+===Broj kreiranih objekata===
+Djeca: 10
+Odrasli: 10
+Stari: 10
+Kuce: 10
+Punktovi:10
+Ambulante: 4
+===Statistički podaci===
+zarazeni: 13
+oporavljeni: 6
+zenski: 5
+muski: 8
+stari: 3
+odrasli: 6
+djeca: 4

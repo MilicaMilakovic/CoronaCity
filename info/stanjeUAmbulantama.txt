@@ -1,2 +1,2 @@
-Broj zaraženih: 2
-Broj oporavljenih: 1
+Broj zaraženih: 7
+Broj oporavljenih: 3

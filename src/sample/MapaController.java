@@ -47,6 +47,7 @@ public class MapaController implements Initializable {
     private static boolean alreadyPressed=false;
     private long start,end;
     private  String stanje="" ;
+
     public static int brojAmbulantnihVozila;
 
 
@@ -83,8 +84,9 @@ public class MapaController implements Initializable {
             Grad.odrasli=odrasli;
             Grad.stari=stari;
 
-            System.out.println("Inicijalizovan grad");
+            System.out.println("Inicijalizovan grad.");
             new ThreadBojac().start();
+
         } catch (Exception e) {
             MyLogger.log(Level.WARNING,e.getMessage(),e);
             e.printStackTrace();
@@ -93,35 +95,33 @@ public class MapaController implements Initializable {
 
     public void posaljiVozilo()
     {
-        if(!Grad.alarmi.isEmpty())
-        {
-            Alarm alarm=Grad.alarmi.pop();
-            for (Ambulanta ambulanta: Grad.ambulante)
-            {
-                if(!ambulanta.isPopunjena())
-                {
-                    ambulanta.setAlarm(alarm);
-                    break;
+        int max = Math.min(Grad.alarmi.size(), brojAmbulantnihVozila);
+
+        for(int i=0; i < max; i++) {
+
+            if (!Grad.alarmi.isEmpty()) {
+                Alarm alarm = Grad.alarmi.pop();
+                for (Ambulanta ambulanta : Grad.ambulante) {
+                    if (!ambulanta.isPopunjena()) {
+                        ambulanta.setAlarm(alarm);
+                        break;
+                    }
+                }
+                Kuca kuca = Grad.kuceUGradu.get(alarm.getKucaId());
+
+                try {
+                    Grad.kuceUGradu.get(alarm.getKucaId()).prikaziKucu();
+                } catch (Exception e) {
+                    MyLogger.log(Level.WARNING, e.getMessage(), e);
+                    e.printStackTrace();
+                }
+
+                for (Stanovnik s : kuca.getUkucani()) {
+                    s.bjezi = true;
                 }
             }
-
-            Kuca kuca=Grad.kuceUGradu.get(alarm.getKucaId());
-
-            try{
-                Grad.kuceUGradu.get(alarm.getKucaId()).prikaziKucu();
-            }
-            catch (Exception e)
-            {
-                MyLogger.log(Level.WARNING,e.getMessage(),e);
-                e.printStackTrace();
-            }
-
-            for(Stanovnik s : kuca.getUkucani())
-            {
-                s.bjezi=true;
-            }
+            signal.setVisible(false);
         }
-        signal.setVisible(false);
     }
 
     public void prikaziStatistiku() throws Exception
