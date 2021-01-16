@@ -167,6 +167,11 @@
                               <Font name="System Bold" size="12.0" />
                            </font>
                         </Label>
+                        <ImageView fitHeight="65.0" fitWidth="58.0" layoutX="-9.0" layoutY="158.0" opacity="0.93" preserveRatio="true">
+                           <image>
+                              <Image url="@resources/virus%20(2).png" />
+                           </image>
+                        </ImageView>
                      </children>
                   </Pane>
                </children>

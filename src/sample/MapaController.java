@@ -1,6 +1,5 @@
 package sample;
 
-import com.sun.webkit.BackForwardList;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -18,7 +17,6 @@ import javafx.scene.paint.Paint;
 import javafx.scene.text.Font;
 import javafx.stage.Stage;
 import net.etfbl.java.*;
-
 
 import java.io.*;
 import java.net.URL;
@@ -94,6 +92,44 @@ public class MapaController implements Initializable {
         }
     }
 
+
+    public static void ucitajGrad(SerijalizabilniGrad sg)
+    {
+        try{
+            Grad.mapa=sg.mapa;
+            Grad.kuceUGradu=sg.kuceUGradu;
+            Grad.punktoviUGradu=sg.punktoviUGradu;
+            Grad.ambulante=sg.ambulante;
+            Grad.alarmi=sg.alarmi;
+            Grad.size=sg.size;
+
+            Grad.prikaziBoje();
+
+            for (int i=0; i<Grad.size;i++)
+            {
+                for(int j=0;j<Grad.size;j++)
+                {
+                    if(Grad.mapa[i][j].getKuca()!=null)
+                    {
+                        Grad.mapa[i][j].getKuca().prikaziKucu();
+                    } else if(Grad.mapa[i][j].getPunkt()!=null)
+                    {
+                        Grad.mapa[i][j].getPunkt().prikaziPunkt();
+                    } else if(Grad.mapa[i][j].getAmbulanta()!=null)
+                    {
+                        Grad.mapa[i][j].getAmbulanta().prikaziAmbulantu();
+                    }
+                }
+            }
+
+
+            Grad.running=true;
+            new ThreadBojac().start();
+        } catch(Exception e )
+        {
+            e.printStackTrace();
+        }
+    }
     public void posaljiVozilo()
     {
         int max = Math.min(Grad.alarmi.size(), brojAmbulantnihVozila);
@@ -207,13 +243,6 @@ public class MapaController implements Initializable {
         {
            e.printStackTrace();
         }
-
-//        Grad.punktoviUGradu.forEach(e ->
-//        {
-//            e.setMc(this);
-////            System.out.println("postavljen mc");
-//        });
-
     }
 
     public void omoguciKretanje()
@@ -273,7 +302,7 @@ public class MapaController implements Initializable {
         }
         System.out.println("Svi tredovi zaustavljeni.");
 
-        SerijalizabilniGrad sg= new SerijalizabilniGrad(Grad.kuceUGradu,Grad.alarmi,Grad.ambulante,Grad.punktoviUGradu,Grad.size);
+        SerijalizabilniGrad sg= new SerijalizabilniGrad(Grad.kuceUGradu,Grad.alarmi,Grad.ambulante,Grad.punktoviUGradu,Grad.size,Grad.mapa);
 
         try(ObjectOutputStream oos=new ObjectOutputStream(new FileOutputStream(new File("grad.ser"))))
         {
@@ -283,8 +312,9 @@ public class MapaController implements Initializable {
         {
             e.printStackTrace();
         }
+
+        System.out.println("Izvrsena serijalizacija.");
         serialization = true;
         zavrsiSimulaciju();
     }
-
 }

@@ -1,8 +1,13 @@
 package net.etfbl.java;
 
 import javafx.application.Platform;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import sample.MapaController;
 
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.Serializable;
 import java.util.logging.Level;
 
@@ -53,5 +58,22 @@ public class Punkt extends Thread implements Serializable {
             }
         }
 
+    }
+
+    public void prikaziPunkt()
+    {
+        Platform.runLater(()-> {
+            Image img = null;
+            try {
+                img = new Image(new FileInputStream(new File(".\\resources\\doctor.png")));
+            } catch (FileNotFoundException e) {
+                MyLogger.log(Level.SEVERE, e.getMessage(), e);
+                e.printStackTrace();
+            }
+            ImageView view = new ImageView(img);
+            view.setFitHeight(Grad.imgRatio);
+            view.setPreserveRatio(true);
+            MapaController.matrica[red][kolona].setGraphic(view);
+        });
     }
 }

@@ -218,4 +218,19 @@ public class Ambulanta extends Thread implements Serializable {
         return "• Ambulanta"+id;
     }
 
+    public void prikaziAmbulantu() {
+        Platform.runLater(() -> {
+            Image img = null;
+            try {
+                img = new Image(new FileInputStream(new File(".\\resources\\hospital.png")));
+            } catch (FileNotFoundException e) {
+                MyLogger.log(Level.SEVERE, e.getMessage(), e);
+                e.printStackTrace();
+            }
+            ImageView view = new ImageView(img);
+            view.setFitHeight(Grad.imgRatio);
+            view.setPreserveRatio(true);
+            MapaController.matrica[red][kolona].setGraphic(view);
+        });
+    }
 }

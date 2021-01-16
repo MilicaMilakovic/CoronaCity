@@ -23,10 +23,10 @@ public class Grad {
     public static int stari,odrasli,djeca;
     public static boolean running = true;
 
-    public static Background DEFAULT_BACKGROUND = new Background(new BackgroundFill(Color.WHITE, null, null));
+    public static final Background DEFAULT_BACKGROUND = new Background(new BackgroundFill(Color.WHITE, null, null));
 
 //    public static final int size= random.nextInt(16)+15;
-    public static final int size=20;
+    public static int size=20;
 
     public static final double ratio= 620/size;
     public static final double imgRatio=550/size;
@@ -217,4 +217,15 @@ public class Grad {
         });
     }
 
+    public static void prikaziBoje()
+    {
+        for(Kuca k : kuceUGradu)
+        {
+            k.fasada=Boja.boje.get(k.getId());
+            for(Stanovnik s : k.getUkucani())
+            {
+                s.setBoja(k.fasada);
+            }
+        }
+    }
 }

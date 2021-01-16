@@ -136,12 +136,22 @@ public class Controller {
         try(ObjectInputStream ois = new ObjectInputStream(new FileInputStream(new File("grad.ser"))))
         {
             SerijalizabilniGrad sg=(SerijalizabilniGrad)ois.readObject();
-            Grad.kuceUGradu=sg.kuceUGradu;
-            Grad.punktoviUGradu=sg.punktoviUGradu;
-            Grad.ambulante=sg.ambulante;
-            Grad.alarmi=sg.alarmi;
 
-            Grad.running=true;
+            MapaController.brojAmbulantnihVozila=sg.ambulante.size();
+
+            MapaController.ucitajGrad(sg);
+
+            Stage primaryStage= new Stage();
+            Parent root = FXMLLoader.load(getClass().getResource("MapaGrada.fxml"));
+
+
+            primaryStage.setTitle("CoronaCity");
+            primaryStage.getIcons().add(new Image(getClass().getResourceAsStream( ".\\resources\\icon.png" )));
+            primaryStage.setScene(new Scene(root, 1000, 700));
+            primaryStage.show();
+
+            Stage stage = (Stage) start.getScene().getWindow();
+            stage.close();
 
         } catch (Exception e)
         {
