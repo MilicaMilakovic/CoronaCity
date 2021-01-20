@@ -27,10 +27,15 @@ public class SerijalizabilniGrad implements Serializable {
     public  int zenski;
     public  int muski;
 
+    public int ukupnoOdrasli;
+    public int ukupnoDjeca;
+    public int ukupnoStari;
+
     public SerijalizabilniGrad(CopyOnWriteArrayList<Kuca> kuceUGradu, Stack<Alarm> alarmi,
                                CopyOnWriteArrayList<Ambulanta> ambulante, CopyOnWriteArrayList<Punkt> punktoviUGradu,int size,Polje[][] mapa,
                                int oporavljeni, int zarazeni, int zarazeniUkupno, int oporavljeniUkupno, int zarazeniOdrasli,
-                               int zarazeniStari, int zarazeniDjeca, int zenski, int muski)
+                               int zarazeniStari, int zarazeniDjeca, int zenski, int muski,
+                               int ukupnoDjeca, int ukupnoOdrasli, int ukupnoStari)
     {
         this.kuceUGradu=kuceUGradu;
         this.alarmi=alarmi;
@@ -47,5 +52,8 @@ public class SerijalizabilniGrad implements Serializable {
         this.zarazeniDjeca=zarazeniDjeca;
         this.zenski=zenski;
         this.muski=muski;
+        this.ukupnoDjeca=ukupnoDjeca;
+        this.ukupnoOdrasli = ukupnoOdrasli;
+        this.ukupnoStari = ukupnoStari;
     }
 }

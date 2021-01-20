@@ -17,6 +17,8 @@ public class Punkt extends Thread implements Serializable {
     public static Polje[][] mapa;
     public  static MapaController mc;
 
+    public static final String punktIcon = "doctor.png";
+
     public Punkt(int red, int kolona, Polje[][] mapa) {
         this.red = red;
         this.kolona = kolona;
@@ -42,9 +44,6 @@ public class Punkt extends Thread implements Serializable {
                                 Grad.alarmi.push(new Alarm(i,j,stanovnik.kucaId));
 
                                 mc.setSignal();
-
-
-//                                System.out.println(stanovnik.toString() + " R I P" + " punkt na " + red + " " + kolona);
                             }
                         }
                     }
@@ -54,7 +53,6 @@ public class Punkt extends Thread implements Serializable {
                 sleep(400);
             } catch (InterruptedException e) {
                 MyLogger.log(Level.SEVERE,e.getMessage(),e);
-                e.printStackTrace();
             }
         }
 
@@ -65,10 +63,9 @@ public class Punkt extends Thread implements Serializable {
         Platform.runLater(()-> {
             Image img = null;
             try {
-                img = new Image(new FileInputStream(new File(".\\resources\\doctor.png")));
+                img = new Image(new FileInputStream(new File("."+File.separator+MapaController.resourcesDir+File.separator+punktIcon)));
             } catch (FileNotFoundException e) {
                 MyLogger.log(Level.SEVERE, e.getMessage(), e);
-                e.printStackTrace();
             }
             ImageView view = new ImageView(img);
             view.setFitHeight(Grad.imgRatio);
@@ -76,6 +73,4 @@ public class Punkt extends Thread implements Serializable {
             MapaController.matrica[red][kolona].setGraphic(view);
         });
     }
-
-
 }

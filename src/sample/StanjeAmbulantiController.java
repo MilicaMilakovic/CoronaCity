@@ -11,10 +11,12 @@ import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import net.etfbl.java.Ambulanta;
 import net.etfbl.java.Grad;
+import net.etfbl.java.MyLogger;
 import net.etfbl.java.Polje;
 
 import java.net.URL;
 import java.util.ResourceBundle;
+import java.util.logging.Level;
 
 public class StanjeAmbulantiController implements Initializable {
 
@@ -105,7 +107,7 @@ public class StanjeAmbulantiController implements Initializable {
                     Thread.sleep(1300);
                 } catch (Exception e)
                 {
-                    e.printStackTrace();
+                    MyLogger.log(Level.WARNING,e.getMessage(),e);
                 }
 
                 Platform.runLater( () -> greska.setText(" "));
@@ -134,6 +136,4 @@ public class StanjeAmbulantiController implements Initializable {
             });
         }
     }
-
-
 }

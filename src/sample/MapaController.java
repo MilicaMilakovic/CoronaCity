@@ -30,13 +30,7 @@ public class MapaController implements Initializable {
     private Pane mapa;
     public  static Label[][] matrica=new Label[Grad.size][Grad.size];
     @FXML
-    private Button voziloButton=new Button();
-    @FXML
-    private Button krajButton=new Button();
-    @FXML
     public ImageView signal;
-    @FXML
-    private Button statistikaButton;
     @FXML
     private Label stanjeAmbulanti=new Label();
     @FXML
@@ -49,6 +43,13 @@ public class MapaController implements Initializable {
 
     public static int brojAmbulantnihVozila;
 
+    // fajlovi
+
+    public static final String serFilename = "grad.ser";
+    public static final String stanjeUAmbulantamaFilename = "stanjeUAmbulantama.txt";
+    public static final String resourcesDir = "resources";
+    public static final String infoDir = "info";
+    public static final String iconFilename = "icon.png";
 
     public void ispisiKretanje(String s)
     {
@@ -66,7 +67,7 @@ public class MapaController implements Initializable {
                 Thread.sleep(1000);
             } catch (Exception e)
             {
-                e.printStackTrace();
+                MyLogger.log(Level.WARNING,e.getMessage(),e);
             }
         }
     }
@@ -88,10 +89,8 @@ public class MapaController implements Initializable {
 
         } catch (Exception e) {
             MyLogger.log(Level.WARNING,e.getMessage(),e);
-            e.printStackTrace();
         }
     }
-
 
     public static void ucitajGrad(SerijalizabilniGrad sg)
     {
@@ -102,6 +101,9 @@ public class MapaController implements Initializable {
             Grad.ambulante=sg.ambulante;
             Grad.alarmi=sg.alarmi;
             Grad.size=sg.size;
+            Grad.odrasli = sg.ukupnoOdrasli;
+            Grad.djeca = sg.ukupnoDjeca;
+            Grad.stari = sg.ukupnoStari;
 
             Ambulanta.zarazeni = sg.zarazeni;
             Ambulanta.oporavljeni = sg.oporavljeni;
@@ -144,7 +146,6 @@ public class MapaController implements Initializable {
                 }
             }
 
-//            Grad.running=true;
             Grad.startThreads();
             new ThreadBojac().start();
 
@@ -189,7 +190,7 @@ public class MapaController implements Initializable {
         Stage primaryStage= new Stage();
         Parent root = FXMLLoader.load(getClass().getResource("Statistika.fxml"));
         primaryStage.setTitle("CoronaCity");
-        primaryStage.getIcons().add(new Image(getClass().getResourceAsStream( ".\\resources\\icon.png" )));
+        primaryStage.getIcons().add(new Image(getClass().getResourceAsStream( "."+File.separator+resourcesDir+File.separator+iconFilename )));
         primaryStage.setScene(new Scene(root, 800, 550));
         primaryStage.setX(290);
         primaryStage.setY(90);
@@ -203,10 +204,9 @@ public class MapaController implements Initializable {
         primaryStage.setTitle("CoronaCity");
         primaryStage.setX(290);
         primaryStage.setY(90);
-        primaryStage.getIcons().add(new Image(getClass().getResourceAsStream( ".\\resources\\icon.png" )));
+        primaryStage.getIcons().add(new Image(getClass().getResourceAsStream( "."+File.separator+resourcesDir+File.separator+iconFilename )));
         primaryStage.setScene(new Scene(root, 800, 550));
         primaryStage.show();
-
     }
 
     @Override
@@ -220,14 +220,8 @@ public class MapaController implements Initializable {
         Grad.fw.setMapaController(this);
         Grad.fw.start();
 
-        //Controller.grad.setMc(this);
-        //mapa.setBackground(new Background(new BackgroundFill(Color.WHITE, null, null)));
-        final int brojRedova, brojKolona;
-        brojRedova=brojKolona= Controller.grad.size;
-
         Group g=new Group();
         Group buttons=new Group();
-        System.out.println("==========Grad" + Grad.size);
 
         for (int i=0; i< Grad.size; i++)
         {
@@ -252,8 +246,7 @@ public class MapaController implements Initializable {
         }
         mapa.getChildren().add(g);
 
-        File file=new File(".\\info\\stanjeUAmbulantama.txt");
-       // String stanje =" ";
+        File file=new File("."+File.separator+infoDir+File.separator+stanjeUAmbulantamaFilename);
         try(BufferedReader br=new BufferedReader(new FileReader(file)))
         {
             String line;
@@ -265,7 +258,7 @@ public class MapaController implements Initializable {
            stanjeAmbulanti.setText(stanje);
         } catch (Exception e)
         {
-           e.printStackTrace();
+           MyLogger.log(Level.WARNING,e.getMessage(),e);
         }
     }
 
@@ -310,6 +303,7 @@ public class MapaController implements Initializable {
                 MyLogger.log(Level.WARNING,e.getMessage(),e);
             }
 
+            System.out.println("Simulacija zavrsena.");
             Platform.exit();
             System.exit(0);
         }
@@ -322,24 +316,27 @@ public class MapaController implements Initializable {
             Thread.sleep(1500);
         } catch (Exception e)
         {
-            e.printStackTrace();
+            MyLogger.log(Level.WARNING,e.getMessage(),e);
         }
         System.out.println("Svi tredovi zaustavljeni.");
 
         SerijalizabilniGrad sg= new SerijalizabilniGrad(Grad.kuceUGradu,Grad.alarmi,Grad.ambulante,Grad.punktoviUGradu,Grad.size,Grad.mapa,
                 Ambulanta.oporavljeni, Ambulanta.zarazeni, Ambulanta.zarazeniUkupno, Ambulanta.oporavljeniUkupno
-                , Ambulanta.zarazeniOdrasli, Ambulanta.zarazeniStari, Ambulanta.zarazeniDjeca, Ambulanta.zenski, Ambulanta.muski);
+                , Ambulanta.zarazeniOdrasli, Ambulanta.zarazeniStari, Ambulanta.zarazeniDjeca, Ambulanta.zenski, Ambulanta.muski, Grad.djeca,
+                Grad.odrasli,Grad.stari);
 
-        try(ObjectOutputStream oos=new ObjectOutputStream(new FileOutputStream(new File("grad.ser"))))
+        try(ObjectOutputStream oos=new ObjectOutputStream(new FileOutputStream(new File(serFilename))))
         {
             oos.writeObject(sg);
 
         } catch (Exception e)
         {
-            e.printStackTrace();
+            MyLogger.log(Level.WARNING,e.getMessage(),e);
         }
 
         System.out.println("Izvrsena serijalizacija.");
-        zavrsiSimulaciju();
+
+        Platform.exit();
+        System.exit(0);
     }
 }

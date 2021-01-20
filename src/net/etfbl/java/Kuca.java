@@ -1,6 +1,5 @@
 package net.etfbl.java;
 
-import com.sun.webkit.BackForwardList;
 import javafx.application.Platform;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -30,6 +29,9 @@ public class Kuca implements Serializable {
 
     public transient Background background;
 
+    public static final String zarazenaKucaIcon = "home2.png";
+    public static final String normalnaKucaIcon = "home.png";
+
     public Kuca(int id, int red, int kolona)
     {
         this.id=id;
@@ -39,10 +41,10 @@ public class Kuca implements Serializable {
         fasada=Boja.boje.get(id);
 
         background = new Background(new BackgroundFill(fasada, null, null));
-        //provjerava da li u kuci ima zarazenih ukucana
         provjeriZarazeneThread();
     }
 
+    //provjerava da li u kuci ima zarazenih ukucana
     public void provjeriZarazeneThread()
     {
         Thread thread=new Thread( () ->
@@ -65,7 +67,6 @@ public class Kuca implements Serializable {
                 } catch (Exception e)
                 {
                     MyLogger.log(Level.SEVERE,e.getMessage(),e);
-                    e.printStackTrace();
                 }
             }
 
@@ -111,7 +112,8 @@ public class Kuca implements Serializable {
             Platform.runLater(() -> {
                 Image img = null;
                 try {
-                    img = new Image(new FileInputStream(new File(".\\resources\\home2.png")));
+                    img = new Image(new FileInputStream(new File("."+File.separator+MapaController.resourcesDir+File.separator+zarazenaKucaIcon)));
+
                 } catch (FileNotFoundException e) {
                     MyLogger.log(Level.SEVERE,e.getMessage(),e);
                     e.printStackTrace();
@@ -127,7 +129,8 @@ public class Kuca implements Serializable {
             Platform.runLater(()-> {
                 Image img = null;
                 try {
-                    img = new Image(new FileInputStream(new File(".\\resources\\home.png")));
+                    img = new Image(new FileInputStream(new File("."+File.separator+MapaController.resourcesDir+File.separator+normalnaKucaIcon)));
+
                 } catch (FileNotFoundException e) {
                     MyLogger.log(Level.SEVERE,e.getMessage(),e);
                     e.printStackTrace();

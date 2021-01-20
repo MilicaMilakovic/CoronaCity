@@ -1,5 +1,4 @@
 package net.etfbl.java;
-import javafx.application.Platform;
 import sample.MapaController;
 
 import java.io.BufferedReader;
@@ -10,7 +9,8 @@ import java.util.logging.Level;
 
 public class FileWatcher extends Thread {
 
-    private Path path=Paths.get("C:\\Users\\Milica\\Desktop\\CoronaCity\\info");
+    private File file = new File("."+File.separator+MapaController.infoDir);
+    private Path path=Paths.get(file.getAbsolutePath());
     private WatchService watchService;
     private MapaController mc;
 
@@ -38,7 +38,7 @@ public class FileWatcher extends Thread {
                     {
                         Path changed = (Path) event.context();
 
-                       try(BufferedReader br=new BufferedReader(new FileReader(new File(".\\info"+File.separator+changed.toString()))))
+                       try(BufferedReader br=new BufferedReader(new FileReader(new File("."+File.separator+MapaController.infoDir+File.separator+changed.toString()))))
                        {
                            String line;
                            String stanje="";
@@ -49,23 +49,21 @@ public class FileWatcher extends Thread {
                            mc.setStanjeAmbulanti(stanje);
                        } catch (Exception e)
                        {
-                           e.printStackTrace();
+                           MyLogger.log(Level.WARNING,e.getMessage(),e);
                        }
-
                     }
                     key.reset();
                 }
 
             }catch (Exception e)
             {
-                e.printStackTrace();
-//                MyLogger.log(Level.WARNING,e.getMessage(),e);
+                MyLogger.log(Level.WARNING,e.getMessage(),e);
             }
             try{
                 sleep(400);
             } catch (Exception e)
             {
-                e.printStackTrace();
+                MyLogger.log(Level.WARNING,e.getMessage(),e);
             }
         }
 

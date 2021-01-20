@@ -13,7 +13,6 @@ import javafx.stage.Stage;
 import net.etfbl.java.Ambulanta;
 import net.etfbl.java.MyLogger;
 
-import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.PrintWriter;
@@ -48,7 +47,6 @@ public class StatistikaController implements Initializable {
         ukupnoZarazeno.setText("• Ukupno zaraženih: "+Ambulanta.zarazeniUkupno);
         ukupnoOzdravilo.setText("• Ukupno oporavljenih: "+Ambulanta.oporavljeniUkupno);
 
-
         ObservableList<PieChart.Data> zarazeniPoPolu = FXCollections.observableArrayList(
                 new PieChart.Data("Ženski", Ambulanta.zenski),
                 new PieChart.Data("Muški", Ambulanta.muski));
@@ -59,7 +57,6 @@ public class StatistikaController implements Initializable {
                 new PieChart.Data("Odrasli", Ambulanta.zarazeniOdrasli),
                 new PieChart.Data("Stari", Ambulanta.zarazeniStari));
         poStarosnimGrupama.setData(zarazeniPoGodinama);
-
     }
 
     public void preuzmiIzvjestaj()
@@ -77,7 +74,6 @@ public class StatistikaController implements Initializable {
         } catch (Exception e)
         {
             MyLogger.log(Level.WARNING,e.getMessage(),e);
-            e.printStackTrace();
         }
 
         Thread t=new Thread(new Runnable() {
@@ -94,6 +90,5 @@ public class StatistikaController implements Initializable {
             }
         });
         t.start();
-
     }
 }

@@ -1,27 +1,21 @@
 package sample;
 
-
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
-import javafx.scene.layout.Background;
-import javafx.scene.layout.Border;
-import javafx.scene.paint.Color;
+
 import javafx.stage.Stage;
 import net.etfbl.java.*;
 
 import java.io.File;
 import java.io.FileInputStream;
+import java.io.IOException;
 import java.io.ObjectInputStream;
-import java.net.URL;
-import java.util.ArrayList;
-import java.util.Map;
-import java.util.ResourceBundle;
+
 import java.util.logging.Level;
 
 public class Controller {
@@ -83,7 +77,7 @@ public class Controller {
             MapaController.brojAmbulantnihVozila=ambulante;
 
             primaryStage.setTitle("CoronaCity");
-            primaryStage.getIcons().add(new Image(getClass().getResourceAsStream( ".\\resources\\icon.png" )));
+            primaryStage.getIcons().add(new Image(getClass().getResourceAsStream( "."+File.separator+MapaController.resourcesDir+File.separator+MapaController.iconFilename)));
             primaryStage.setScene(new Scene(root, 1000, 700));
             primaryStage.show();
 
@@ -124,15 +118,14 @@ public class Controller {
             Stage ps= new Stage();
             Parent root1 = FXMLLoader.load(getClass().getResource("Error.fxml"));
             ps.setTitle("CoronaCity");
-            ps.getIcons().add(new Image(getClass().getResourceAsStream( ".\\resources\\icon.png" )));
+            ps.getIcons().add(new Image(getClass().getResourceAsStream( "."+File.separator+MapaController.resourcesDir+File.separator+MapaController.iconFilename )));
             ps.setScene(new Scene(root1, 400, 400));
             ps.show();
 
             MyLogger.log(Level.WARNING,"Neispravan unos",e);
         }
     }
-    public void ponovnoPokretanje()
-    {
+    public void ponovnoPokretanje() throws IOException {
         try(ObjectInputStream ois = new ObjectInputStream(new FileInputStream(new File("grad.ser"))))
         {
             SerijalizabilniGrad sg=(SerijalizabilniGrad)ois.readObject();
@@ -142,7 +135,7 @@ public class Controller {
             Parent root = FXMLLoader.load(getClass().getResource("MapaGrada.fxml"));
 
             primaryStage.setTitle("CoronaCity");
-            primaryStage.getIcons().add(new Image(getClass().getResourceAsStream( ".\\resources\\icon.png" )));
+            primaryStage.getIcons().add(new Image(getClass().getResourceAsStream( "."+File.separator+MapaController.resourcesDir+File.separator+MapaController.iconFilename)));
             primaryStage.setScene(new Scene(root, 1000, 700));
             primaryStage.show();
 
@@ -156,7 +149,15 @@ public class Controller {
 
         } catch (Exception e)
         {
-            e.printStackTrace();
+            ErrorController.s = "Ne postoji sacuvana simulacija.";
+            Stage ps= new Stage();
+            Parent root1 = FXMLLoader.load(getClass().getResource("Error.fxml"));
+            ps.setTitle("CoronaCity");
+            ps.getIcons().add(new Image(getClass().getResourceAsStream( "."+File.separator+MapaController.resourcesDir+File.separator+MapaController.iconFilename )));
+            ps.setScene(new Scene(root1, 400, 400));
+            ps.show();
+
+            MyLogger.log(Level.WARNING,"Greska pri deserijalizaciji.", e);
         }
     }
 }

@@ -127,7 +127,6 @@ public abstract  class Stanovnik extends Thread implements Serializable {
             } catch (Exception e)
             {
                 MyLogger.log(Level.SEVERE,e.getMessage(),e);
-                e.printStackTrace();
             }
 
             pomjeriSe();
@@ -144,7 +143,6 @@ public abstract  class Stanovnik extends Thread implements Serializable {
                     sleep(30000);
                 } catch (Exception e) {
                     MyLogger.log(Level.SEVERE,e.getMessage(),e);
-                    e.printStackTrace();
                 }
             }
         });
@@ -199,7 +197,6 @@ public abstract  class Stanovnik extends Thread implements Serializable {
     public void run() {
 
         while (Grad.running) {
-//            System.out.println("run");
             try {
                 sleep(700 + new Random().nextInt(500));
 
@@ -209,12 +206,10 @@ public abstract  class Stanovnik extends Thread implements Serializable {
                 }
 
                 if (bjezi) {
-//                    System.out.println("Mozda bjezi");
                     vratiSeKuci(Grad.kuceUGradu.get(kucaId).getRed(), Grad.kuceUGradu.get(kucaId).getKolona());
                 }
                 else {
                     synchronized (lock) {
-//                      System.out.println("Hoda");
 
                         Pravac pravac = Pravac.values()[random.nextInt(4)];
                         narednaPozicija(pravac);

@@ -28,7 +28,7 @@ public class Ambulanta extends Thread implements Serializable {
     private ArrayList<Integer> temperature=new ArrayList<>();
 
     public static int brojStanovnika;
-    public static File file=new File(".\\info\\stanjeUAmbulantama.txt");
+    public static File file=new File("."+File.separator+MapaController.infoDir+File.separator+MapaController.stanjeUAmbulantamaFilename);
     public static int oporavljeni;
     public static int zarazeni;
 
@@ -40,6 +40,7 @@ public class Ambulanta extends Thread implements Serializable {
     public static int zenski;
     public static int muski;
 
+    public static final String bolnicaIcon = "hospital.png";
 
     public static void prikaziStanje() {
         try (BufferedWriter bw = new BufferedWriter(new FileWriter(file))) {
@@ -60,12 +61,11 @@ public class Ambulanta extends Thread implements Serializable {
         this.kolona=kolona;
         kapacitet=Math.round(((new Random()).nextInt(6)+10)*brojStanovnika/100.0);
 
-
         Image img1 = null;
         try {
-            img1 = new Image(new FileInputStream(new File(".\\resources\\hospital.png")));
+            img1 = new Image(new FileInputStream(new File("."+File.separator+MapaController.resourcesDir+File.separator+bolnicaIcon)));
         } catch (FileNotFoundException e) {
-            e.printStackTrace();
+            MyLogger.log(Level.WARNING,e.getMessage(),e);
         }
         ImageView view1 = new ImageView(img1);
         view1.setFitHeight(Grad.imgRatio);
@@ -117,7 +117,6 @@ public class Ambulanta extends Thread implements Serializable {
 
     public void setAlarm(Alarm alarm)
     {
-       // this.alarm=alarm;
         for( Stanovnik s: Grad.mapa[alarm.getRed()][alarm.getKolona()].getStanovnici()) {
             if (s.zarazen) {
 
@@ -174,7 +173,6 @@ public class Ambulanta extends Thread implements Serializable {
                 sleep(400);
             } catch (Exception e) {
                 MyLogger.log(Level.SEVERE,e.getMessage(),e);
-                e.printStackTrace();
             }
         }
     }
@@ -187,7 +185,6 @@ public class Ambulanta extends Thread implements Serializable {
                 bw.write("Broj oporavljenih: " + oporavljeni);
             } catch (Exception e) {
                 MyLogger.log(Level.SEVERE, e.getMessage(), e);
-                e.printStackTrace();
             }
         }
     }
@@ -197,7 +194,7 @@ public class Ambulanta extends Thread implements Serializable {
         ++oporavljeni;
         --zarazeni;
 
-        System.out.println(stanovnik.toString() + " otpusten iz ambulante "+id + "temp:"+trenutnaTemp+" "+stanovnik.kucaId);
+        System.out.println(stanovnik.toString() + " otpusten iz ambulante "+id + " | Temp:"+trenutnaTemp+" "+stanovnik.kucaId);
 
         Kuca kuca = Grad.kuceUGradu.get(stanovnik.kucaId);
         Grad.mapa[kuca.getRed()][kuca.getKolona()].dodajStanovnika(stanovnik);
@@ -210,9 +207,7 @@ public class Ambulanta extends Thread implements Serializable {
 
     public boolean isPopunjena()
     {
-        if(trenutnoStanje==kapacitet)
-            return true;
-        return false;
+        return trenutnoStanje == kapacitet;
     }
 
     @Override
@@ -224,7 +219,7 @@ public class Ambulanta extends Thread implements Serializable {
         Platform.runLater(() -> {
             Image img = null;
             try {
-                img = new Image(new FileInputStream(new File(".\\resources\\hospital.png")));
+                img = new Image(new FileInputStream(new File("."+File.separator+MapaController.resourcesDir+File.separator+bolnicaIcon)));
             } catch (FileNotFoundException e) {
                 MyLogger.log(Level.SEVERE, e.getMessage(), e);
                 e.printStackTrace();
