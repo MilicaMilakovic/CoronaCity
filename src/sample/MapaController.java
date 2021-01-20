@@ -103,7 +103,18 @@ public class MapaController implements Initializable {
             Grad.alarmi=sg.alarmi;
             Grad.size=sg.size;
 
+            Ambulanta.zarazeni = sg.zarazeni;
+            Ambulanta.oporavljeni = sg.oporavljeni;
+            Ambulanta.zarazeniUkupno= sg.zarazeniUkupno;
+            Ambulanta.oporavljeniUkupno = sg.oporavljeniUkupno;
+            Ambulanta.zarazeniDjeca = sg.zarazeniDjeca;
+            Ambulanta.zarazeniOdrasli = sg.zarazeniOdrasli;
+            Ambulanta.zarazeniStari = sg.zarazeniStari;
+            Ambulanta.muski = sg.muski;
+            Ambulanta.zenski = sg.zenski;
+
             Grad.prikaziBoje();
+            Ambulanta.prikaziStanje();
 
             for (int i=0; i<Grad.size;i++)
             {
@@ -122,17 +133,17 @@ public class MapaController implements Initializable {
                 }
             }
 
-            for(Punkt p : Grad.punktoviUGradu)
-            {
-                p.mapa=Grad.mapa;
-            }
+            Punkt.mapa =Grad.mapa;
+
             for(Kuca k : Grad.kuceUGradu)
             {
+                k.provjeriZarazeneThread();
                 for(Stanovnik s : k.getUkucani())
                 {
                    s.izracunajTemperaturu();
                 }
             }
+
 //            Grad.running=true;
             Grad.startThreads();
             new ThreadBojac().start();
@@ -315,7 +326,9 @@ public class MapaController implements Initializable {
         }
         System.out.println("Svi tredovi zaustavljeni.");
 
-        SerijalizabilniGrad sg= new SerijalizabilniGrad(Grad.kuceUGradu,Grad.alarmi,Grad.ambulante,Grad.punktoviUGradu,Grad.size,Grad.mapa);
+        SerijalizabilniGrad sg= new SerijalizabilniGrad(Grad.kuceUGradu,Grad.alarmi,Grad.ambulante,Grad.punktoviUGradu,Grad.size,Grad.mapa,
+                Ambulanta.oporavljeni, Ambulanta.zarazeni, Ambulanta.zarazeniUkupno, Ambulanta.oporavljeniUkupno
+                , Ambulanta.zarazeniOdrasli, Ambulanta.zarazeniStari, Ambulanta.zarazeniDjeca, Ambulanta.zenski, Ambulanta.muski);
 
         try(ObjectOutputStream oos=new ObjectOutputStream(new FileOutputStream(new File("grad.ser"))))
         {

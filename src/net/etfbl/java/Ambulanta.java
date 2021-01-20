@@ -29,8 +29,8 @@ public class Ambulanta extends Thread implements Serializable {
 
     public static int brojStanovnika;
     public static File file=new File(".\\info\\stanjeUAmbulantama.txt");
-    private static int oporavljeni;
-    private static int zarazeni;
+    public static int oporavljeni;
+    public static int zarazeni;
 
     public static int zarazeniUkupno;
     public static int oporavljeniUkupno;
@@ -41,10 +41,10 @@ public class Ambulanta extends Thread implements Serializable {
     public static int muski;
 
 
-    static {
+    public static void prikaziStanje() {
         try (BufferedWriter bw = new BufferedWriter(new FileWriter(file))) {
-            bw.write("Broj zaraženih: 0 \n");
-            bw.write("Broj oporavljenih: 0" );
+            bw.write("Broj zaraženih:  "+ zarazeni);
+            bw.write("\nBroj oporavljenih: " +oporavljeni);
         } catch (Exception e) {
             MyLogger.log(Level.SEVERE, e.getMessage(), e);
         }
@@ -79,6 +79,8 @@ public class Ambulanta extends Thread implements Serializable {
                 e.printStackTrace();
             }
         } );
+
+        prikaziStanje();
     }
 
     public int getID() {

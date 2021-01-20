@@ -40,12 +40,17 @@ public class Kuca implements Serializable {
 
         background = new Background(new BackgroundFill(fasada, null, null));
         //provjerava da li u kuci ima zarazenih ukucana
+        provjeriZarazeneThread();
+    }
+
+    public void provjeriZarazeneThread()
+    {
         Thread thread=new Thread( () ->
         {
             while (true) {
                 if (!ukucani.isEmpty()) {
                     if(ukucani.stream()
-                              .anyMatch(stanovnik -> stanovnik.zarazen))
+                            .anyMatch(stanovnik -> stanovnik.zarazen))
                         zarazena=true;
                     else zarazena=false;
                 }

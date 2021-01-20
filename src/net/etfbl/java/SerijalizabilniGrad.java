@@ -13,8 +13,24 @@ public class SerijalizabilniGrad implements Serializable {
     public  Polje[][] mapa;
     public int size;
 
+
+    //polja ambulante
+
+    public int oporavljeni;
+    public int zarazeni;
+
+    public  int zarazeniUkupno;
+    public  int oporavljeniUkupno;
+    public  int zarazeniOdrasli;
+    public  int zarazeniStari;
+    public  int zarazeniDjeca;
+    public  int zenski;
+    public  int muski;
+
     public SerijalizabilniGrad(CopyOnWriteArrayList<Kuca> kuceUGradu, Stack<Alarm> alarmi,
-                               CopyOnWriteArrayList<Ambulanta> ambulante, CopyOnWriteArrayList<Punkt> punktoviUGradu,int size,Polje[][] mapa)
+                               CopyOnWriteArrayList<Ambulanta> ambulante, CopyOnWriteArrayList<Punkt> punktoviUGradu,int size,Polje[][] mapa,
+                               int oporavljeni, int zarazeni, int zarazeniUkupno, int oporavljeniUkupno, int zarazeniOdrasli,
+                               int zarazeniStari, int zarazeniDjeca, int zenski, int muski)
     {
         this.kuceUGradu=kuceUGradu;
         this.alarmi=alarmi;
@@ -22,5 +38,14 @@ public class SerijalizabilniGrad implements Serializable {
         this.punktoviUGradu=punktoviUGradu;
         this.size=size;
         this.mapa=mapa;
+        this.oporavljeni=oporavljeni;
+        this.zarazeni=zarazeni;
+        this.zarazeniUkupno=zarazeniUkupno;
+        this.oporavljeniUkupno=oporavljeniUkupno;
+        this.zarazeniOdrasli=zarazeniOdrasli;
+        this.zarazeniStari=zarazeniStari;
+        this.zarazeniDjeca=zarazeniDjeca;
+        this.zenski=zenski;
+        this.muski=muski;
     }
 }

@@ -141,13 +141,13 @@ public class Controller {
             Stage primaryStage= new Stage();
             Parent root = FXMLLoader.load(getClass().getResource("MapaGrada.fxml"));
 
-
             primaryStage.setTitle("CoronaCity");
             primaryStage.getIcons().add(new Image(getClass().getResourceAsStream( ".\\resources\\icon.png" )));
             primaryStage.setScene(new Scene(root, 1000, 700));
             primaryStage.show();
 
             MapaController.serialization = true;
+            System.out.println("Izvrsena deserijalizacija.");
 
             MapaController.ucitajGrad(sg);
 
