@@ -74,6 +74,11 @@ public class Kuca implements Serializable {
         ++count;
     }
 
+    public void setFasada(Color fasada) {
+        this.fasada = fasada;
+        background = new Background(new BackgroundFill(fasada, null, null));
+    }
+
     public int getId() {
         return id;
     }

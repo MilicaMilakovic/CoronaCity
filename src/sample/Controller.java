@@ -138,9 +138,6 @@ public class Controller {
             SerijalizabilniGrad sg=(SerijalizabilniGrad)ois.readObject();
 
             MapaController.brojAmbulantnihVozila=sg.ambulante.size();
-
-            MapaController.ucitajGrad(sg);
-
             Stage primaryStage= new Stage();
             Parent root = FXMLLoader.load(getClass().getResource("MapaGrada.fxml"));
 
@@ -149,6 +146,10 @@ public class Controller {
             primaryStage.getIcons().add(new Image(getClass().getResourceAsStream( ".\\resources\\icon.png" )));
             primaryStage.setScene(new Scene(root, 1000, 700));
             primaryStage.show();
+
+            MapaController.serialization = true;
+
+            MapaController.ucitajGrad(sg);
 
             Stage stage = (Stage) start.getScene().getWindow();
             stage.close();

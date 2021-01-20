@@ -14,7 +14,7 @@ import java.util.logging.Level;
 public class Punkt extends Thread implements Serializable {
 
     public int red, kolona;
-    private static Polje[][] mapa;
+    public static Polje[][] mapa;
     public  static MapaController mc;
 
     public Punkt(int red, int kolona, Polje[][] mapa) {
@@ -76,4 +76,6 @@ public class Punkt extends Thread implements Serializable {
             MapaController.matrica[red][kolona].setGraphic(view);
         });
     }
+
+
 }

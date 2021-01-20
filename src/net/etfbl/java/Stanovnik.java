@@ -134,7 +134,7 @@ public abstract  class Stanovnik extends Thread implements Serializable {
         }
 
     }
-    private void izracunajTemperaturu() {
+    public void izracunajTemperaturu() {
         Thread thread = new Thread(() ->
         {
             while (true) {

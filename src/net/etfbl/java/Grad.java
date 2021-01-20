@@ -221,7 +221,7 @@ public class Grad {
     {
         for(Kuca k : kuceUGradu)
         {
-            k.fasada=Boja.boje.get(k.getId());
+            k.setFasada(Boja.boje.get(k.getId()));
             for(Stanovnik s : k.getUkucani())
             {
                 s.setBoja(k.fasada);

@@ -43,7 +43,7 @@ public class MapaController implements Initializable {
     public TextArea kretanjeInfo=new TextArea();
 
     private static boolean alreadyPressed=false;
-    private static boolean serialization=false;
+    public static boolean serialization=false;
     private long start,end;
     private  String stanje="" ;
 
@@ -122,9 +122,21 @@ public class MapaController implements Initializable {
                 }
             }
 
-
-            Grad.running=true;
+            for(Punkt p : Grad.punktoviUGradu)
+            {
+                p.mapa=Grad.mapa;
+            }
+            for(Kuca k : Grad.kuceUGradu)
+            {
+                for(Stanovnik s : k.getUkucani())
+                {
+                   s.izracunajTemperaturu();
+                }
+            }
+//            Grad.running=true;
+            Grad.startThreads();
             new ThreadBojac().start();
+
         } catch(Exception e )
         {
             e.printStackTrace();
@@ -204,6 +216,7 @@ public class MapaController implements Initializable {
 
         Group g=new Group();
         Group buttons=new Group();
+        System.out.println("==========Grad" + Grad.size);
 
         for (int i=0; i< Grad.size; i++)
         {
@@ -314,7 +327,6 @@ public class MapaController implements Initializable {
         }
 
         System.out.println("Izvrsena serijalizacija.");
-        serialization = true;
         zavrsiSimulaciju();
     }
 }

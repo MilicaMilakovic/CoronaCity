@@ -18,6 +18,7 @@ import java.util.ArrayList;
 
 public class ThreadBojac extends Thread {
 
+    public static Polje[][] mapa;
     @Override
     public void run() {
 
@@ -43,6 +44,7 @@ public class ThreadBojac extends Thread {
                         });
                     } else {
                         Label l = MapaController.matrica[e.red][e.kolona];
+
                         Platform.runLater(() ->
                         {
                             l.setBackground(Grad.DEFAULT_BACKGROUND);

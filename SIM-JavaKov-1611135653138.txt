@@ -1,4 +1,4 @@
-Trajanje simulacije u [ms]:13184
+Trajanje simulacije u [ms]:1611135653138
 ===Broj kreiranih objekata===
 Djeca: 0
 Odrasli: 0
