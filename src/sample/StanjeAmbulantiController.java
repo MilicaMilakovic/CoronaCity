@@ -27,8 +27,8 @@ public class StanjeAmbulantiController implements Initializable {
     @FXML
     private TextArea stanjeAmbulanti;
 
-    private static int red=0, kolona=1;
-    private static boolean popunjenoGore, popunjenoDole, popunjenoDesno, popunjenoLijevo;
+    public static int red=0, kolona=1;
+    public static boolean popunjenoGore, popunjenoDole, popunjenoDesno, popunjenoLijevo;
 
     @FXML
     public void handleCloseButtonAction(ActionEvent event) {

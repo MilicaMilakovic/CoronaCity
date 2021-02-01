@@ -107,6 +107,8 @@ public class MapaController implements Initializable {
 
             Ambulanta.zarazeni = sg.zarazeni;
             Ambulanta.oporavljeni = sg.oporavljeni;
+            Ambulanta.count = sg.count;
+            Ambulanta.brojStanovnika = sg.brojStanovnika;
             Ambulanta.zarazeniUkupno= sg.zarazeniUkupno;
             Ambulanta.oporavljeniUkupno = sg.oporavljeniUkupno;
             Ambulanta.zarazeniDjeca = sg.zarazeniDjeca;
@@ -114,6 +116,13 @@ public class MapaController implements Initializable {
             Ambulanta.zarazeniStari = sg.zarazeniStari;
             Ambulanta.muski = sg.muski;
             Ambulanta.zenski = sg.zenski;
+
+            StanjeAmbulantiController.red = sg.red;
+            StanjeAmbulantiController.kolona = sg.kolona;
+            StanjeAmbulantiController.popunjenoLijevo = sg.popunjenoLijevo;
+            StanjeAmbulantiController.popunjenoDesno = sg.popunjenoDesno;
+            StanjeAmbulantiController.popunjenoDole = sg.popunjenoDole;
+            StanjeAmbulantiController.popunjenoGore = sg.popunjenoGore;
 
             Grad.prikaziBoje();
             Ambulanta.prikaziStanje();
@@ -222,7 +231,9 @@ public class MapaController implements Initializable {
 
         Group g=new Group();
         Group buttons=new Group();
-
+        Grad.size = SerijalizabilniGrad.staticSize;
+        Grad.ratio= 620/Grad.size;
+        Grad.imgRatio=550/Grad.size;
         for (int i=0; i< Grad.size; i++)
         {
             matrica[i] = new Label[Grad.size];
@@ -321,9 +332,10 @@ public class MapaController implements Initializable {
         System.out.println("Svi tredovi zaustavljeni.");
 
         SerijalizabilniGrad sg= new SerijalizabilniGrad(Grad.kuceUGradu,Grad.alarmi,Grad.ambulante,Grad.punktoviUGradu,Grad.size,Grad.mapa,
-                Ambulanta.oporavljeni, Ambulanta.zarazeni, Ambulanta.zarazeniUkupno, Ambulanta.oporavljeniUkupno
+                Ambulanta.oporavljeni, Ambulanta.zarazeni, Ambulanta.count, Ambulanta.brojStanovnika, Ambulanta.zarazeniUkupno, Ambulanta.oporavljeniUkupno
                 , Ambulanta.zarazeniOdrasli, Ambulanta.zarazeniStari, Ambulanta.zarazeniDjeca, Ambulanta.zenski, Ambulanta.muski, Grad.djeca,
-                Grad.odrasli,Grad.stari);
+                Grad.odrasli,Grad.stari,StanjeAmbulantiController.red, StanjeAmbulantiController.kolona,StanjeAmbulantiController.popunjenoGore,
+                StanjeAmbulantiController.popunjenoDole, StanjeAmbulantiController.popunjenoDesno, StanjeAmbulantiController.popunjenoLijevo);
 
         try(ObjectOutputStream oos=new ObjectOutputStream(new FileOutputStream(new File(serFilename))))
         {

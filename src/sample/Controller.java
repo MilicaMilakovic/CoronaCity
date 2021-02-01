@@ -129,7 +129,8 @@ public class Controller {
         try(ObjectInputStream ois = new ObjectInputStream(new FileInputStream(new File("grad.ser"))))
         {
             SerijalizabilniGrad sg=(SerijalizabilniGrad)ois.readObject();
-
+//            Grad.size=sg.size;
+            SerijalizabilniGrad.staticSize = sg.size;
             MapaController.brojAmbulantnihVozila=sg.ambulante.size();
             Stage primaryStage= new Stage();
             Parent root = FXMLLoader.load(getClass().getResource("MapaGrada.fxml"));
@@ -149,7 +150,7 @@ public class Controller {
 
         } catch (Exception e)
         {
-            ErrorController.s = "Ne postoji sacuvana simulacija.";
+            ErrorController.s = "Ne postoji sačuvana simulacija.";
             Stage ps= new Stage();
             Parent root1 = FXMLLoader.load(getClass().getResource("Error.fxml"));
             ps.setTitle("CoronaCity");

@@ -25,11 +25,12 @@ public class Grad {
 
     public static final Background DEFAULT_BACKGROUND = new Background(new BackgroundFill(Color.WHITE, null, null));
 
-//    public static final int size= random.nextInt(16)+15;
-    public static int size=20;
+//    public static  int size;
+    public static  int size= random.nextInt(16)+15;
+//    public static int size;
 
-    public static final double ratio= 620/size;
-    public static final double imgRatio=550/size;
+    public static  double ratio= 620/size;
+    public static  double imgRatio=550/size;
 
 //    public static ConcurrentHashMap<Integer,Polje> kuceUGradu=new ConcurrentHashMap<>();
     public static CopyOnWriteArrayList<Kuca> kuceUGradu=new CopyOnWriteArrayList<>();
