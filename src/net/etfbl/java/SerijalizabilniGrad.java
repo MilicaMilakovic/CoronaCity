@@ -33,6 +33,9 @@ public class SerijalizabilniGrad implements Serializable {
     public int ukupnoDjeca;
     public int ukupnoStari;
 
+    // da li je signal za zarazene bio setovan u trenutku serijalizacije
+    public  boolean signalSet;
+
     // polja iz StanjeAmbulantiController
 
     public int red, kolona;
@@ -42,7 +45,7 @@ public class SerijalizabilniGrad implements Serializable {
                                CopyOnWriteArrayList<Ambulanta> ambulante, CopyOnWriteArrayList<Punkt> punktoviUGradu,int size,Polje[][] mapa,
                                int oporavljeni, int zarazeni, int count, int brojStanovnika, int zarazeniUkupno, int oporavljeniUkupno, int zarazeniOdrasli,
                                int zarazeniStari, int zarazeniDjeca, int zenski, int muski,
-                               int ukupnoDjeca, int ukupnoOdrasli, int ukupnoStari,
+                               int ukupnoDjeca, int ukupnoOdrasli, int ukupnoStari, boolean signalSet,
                                 int red, int kolona, boolean popunjenoGore, boolean popunjenoDole, boolean popunjenoDesno, boolean popunjenoLijevo)
     {
         this.kuceUGradu=kuceUGradu;
@@ -67,6 +70,7 @@ public class SerijalizabilniGrad implements Serializable {
         this.ukupnoDjeca=ukupnoDjeca;
         this.ukupnoOdrasli = ukupnoOdrasli;
         this.ukupnoStari = ukupnoStari;
+        this.signalSet = signalSet;
 
         this.red = red;
         this.kolona = kolona;

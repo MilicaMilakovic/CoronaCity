@@ -28,7 +28,7 @@ public class MapaController implements Initializable {
 
     @FXML
     private Pane mapa;
-    public  static Label[][] matrica=new Label[Grad.size][Grad.size];
+    public static Label[][] matrica;
     @FXML
     public ImageView signal;
     @FXML
@@ -51,6 +51,8 @@ public class MapaController implements Initializable {
     public static final String infoDir = "info";
     public static final String iconFilename = "icon.png";
 
+    public static boolean signalSet;
+
     public void ispisiKretanje(String s)
     {
         Platform.runLater(() -> {
@@ -63,6 +65,7 @@ public class MapaController implements Initializable {
         while (!Grad.alarmi.isEmpty())
         {
             signal.setVisible(true);
+           // signalSet = true;
             try{
                 Thread.sleep(1000);
             } catch (Exception e)
@@ -70,6 +73,7 @@ public class MapaController implements Initializable {
                 MyLogger.log(Level.WARNING,e.getMessage(),e);
             }
         }
+       // signalSet = false;
     }
     public void setStanjeAmbulanti(String tekst)
     {
@@ -104,6 +108,8 @@ public class MapaController implements Initializable {
             Grad.odrasli = sg.ukupnoOdrasli;
             Grad.djeca = sg.ukupnoDjeca;
             Grad.stari = sg.ukupnoStari;
+            signalSet = sg.signalSet;
+
 
             Ambulanta.zarazeni = sg.zarazeni;
             Ambulanta.oporavljeni = sg.oporavljeni;
@@ -157,6 +163,11 @@ public class MapaController implements Initializable {
 
             Grad.startThreads();
             new ThreadBojac().start();
+            new Thread(() ->
+            {
+                Grad.mc.setSignal();
+            }).start();
+
 
         } catch(Exception e )
         {
@@ -234,6 +245,11 @@ public class MapaController implements Initializable {
         Grad.size = SerijalizabilniGrad.staticSize;
         Grad.ratio= 620/Grad.size;
         Grad.imgRatio=550/Grad.size;
+
+        //setSignal();
+
+        matrica = new Label[Grad.size][Grad.size];
+
         for (int i=0; i< Grad.size; i++)
         {
             matrica[i] = new Label[Grad.size];
@@ -334,7 +350,7 @@ public class MapaController implements Initializable {
         SerijalizabilniGrad sg= new SerijalizabilniGrad(Grad.kuceUGradu,Grad.alarmi,Grad.ambulante,Grad.punktoviUGradu,Grad.size,Grad.mapa,
                 Ambulanta.oporavljeni, Ambulanta.zarazeni, Ambulanta.count, Ambulanta.brojStanovnika, Ambulanta.zarazeniUkupno, Ambulanta.oporavljeniUkupno
                 , Ambulanta.zarazeniOdrasli, Ambulanta.zarazeniStari, Ambulanta.zarazeniDjeca, Ambulanta.zenski, Ambulanta.muski, Grad.djeca,
-                Grad.odrasli,Grad.stari,StanjeAmbulantiController.red, StanjeAmbulantiController.kolona,StanjeAmbulantiController.popunjenoGore,
+                Grad.odrasli,Grad.stari, signalSet, StanjeAmbulantiController.red, StanjeAmbulantiController.kolona,StanjeAmbulantiController.popunjenoGore,
                 StanjeAmbulantiController.popunjenoDole, StanjeAmbulantiController.popunjenoDesno, StanjeAmbulantiController.popunjenoLijevo);
 
         try(ObjectOutputStream oos=new ObjectOutputStream(new FileOutputStream(new File(serFilename))))
