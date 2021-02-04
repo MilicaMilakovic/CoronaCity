@@ -84,7 +84,7 @@ public class StatistikaController implements Initializable {
                     Thread.sleep(1300);
                 } catch (Exception e)
                 {
-                    e.printStackTrace();
+                    MyLogger.log(Level.WARNING,e.getMessage(),e);
                 }
                 Platform.runLater( () -> izvjestajPreuzet.setText(" "));
             }

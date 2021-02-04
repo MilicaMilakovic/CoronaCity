@@ -1,7 +1,5 @@
 package net.etfbl.java;
 
-import javafx.scene.paint.Color;
-
 import java.util.Calendar;
 import java.util.Random;
 

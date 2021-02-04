@@ -5,11 +5,14 @@
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/grad.ser" beforeDir="false" afterPath="$PROJECT_DIR$/grad.ser" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/info/stanjeUAmbulantama.txt" beforeDir="false" afterPath="$PROJECT_DIR$/info/stanjeUAmbulantama.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/CoronaCity/net/etfbl/java/Grad$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/CoronaCity/net/etfbl/java/Grad$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/CoronaCity/net/etfbl/java/Grad.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/CoronaCity/net/etfbl/java/Grad.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/izvjestaj0.csv" beforeDir="false" afterPath="$PROJECT_DIR$/izvjestaj0.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/net/etfbl/java/Dijete.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/net/etfbl/java/Dijete.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/net/etfbl/java/FileWatcher.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/net/etfbl/java/FileWatcher.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/net/etfbl/java/Grad.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/net/etfbl/java/Grad.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/net/etfbl/java/SerijalizabilniGrad.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/net/etfbl/java/SerijalizabilniGrad.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sample/MapaController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/MapaController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/net/etfbl/java/Polje.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/net/etfbl/java/Polje.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/net/etfbl/java/Stanovnik.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/net/etfbl/java/Stanovnik.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/net/etfbl/java/Stari.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/net/etfbl/java/Stari.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sample/StatistikaController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/StatistikaController.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />

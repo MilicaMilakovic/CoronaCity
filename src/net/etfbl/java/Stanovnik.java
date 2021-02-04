@@ -1,7 +1,5 @@
 package net.etfbl.java;
 
-import com.sun.webkit.BackForwardList;
-import javafx.application.Platform;
 import javafx.scene.layout.Background;
 import javafx.scene.layout.BackgroundFill;
 import javafx.scene.paint.Color;

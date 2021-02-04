@@ -1,8 +1,6 @@
 package net.etfbl.java;
 
-import java.awt.*;
 import java.io.Serializable;
-import java.util.ArrayList;
 import java.util.concurrent.CopyOnWriteArrayList;
 
 public class Polje implements Serializable {

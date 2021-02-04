@@ -20,7 +20,7 @@ public class FileWatcher extends Thread {
         this.watchService = FileSystems.getDefault().newWatchService();
         path.register(watchService, StandardWatchEventKinds.ENTRY_MODIFY);
         } catch (Exception e) {
-            e.printStackTrace();
+            MyLogger.log(Level.WARNING,e.getMessage(),e);
         }
     }
 

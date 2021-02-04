@@ -92,7 +92,8 @@ public class Grad {
 
                 MapaController.matrica[i][j].setBackground(new Background(new BackgroundFill(Color.WHITE, null, null)));
 
-                Image img = new Image(new FileInputStream(new File(".\\resources\\doctor.png")));
+                Image img = new Image(new FileInputStream(new File("."+File.separator+MapaController.resourcesDir+File.separator+Punkt.punktIcon)));
+                //Image img = new Image(new FileInputStream(new File(".\\resources\\doctor.png")));
                 ImageView view = new ImageView(img);
                 view.setFitHeight(imgRatio);
                 view.setPreserveRatio(true);
