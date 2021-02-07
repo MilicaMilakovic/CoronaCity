@@ -5,9 +5,10 @@
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/info/stanjeUAmbulantama.txt" beforeDir="false" afterPath="$PROJECT_DIR$/info/stanjeUAmbulantama.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/CoronaCity/sample/MapaController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/CoronaCity/sample/MapaController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/net/etfbl/java/Grad.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/net/etfbl/java/Grad.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/net/etfbl/java/Ambulanta.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/net/etfbl/java/Ambulanta.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/net/etfbl/java/Kuca.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/net/etfbl/java/Kuca.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sample/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/Main.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/sample/MapaController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/MapaController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sample/StatistikaController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/StatistikaController.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />

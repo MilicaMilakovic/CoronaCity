@@ -196,7 +196,7 @@ public class MapaController implements Initializable {
                     Grad.kuceUGradu.get(alarm.getKucaId()).prikaziKucu();
                 } catch (Exception e) {
                     MyLogger.log(Level.WARNING, e.getMessage(), e);
-                    e.printStackTrace();
+
                 }
 
                 for (Stanovnik s : kuca.getUkucani()) {
@@ -312,7 +312,7 @@ public class MapaController implements Initializable {
 
             try(BufferedWriter bw=new BufferedWriter(new FileWriter(file)))
             {
-                bw.write("Trajanje simulacije [mm:ss]: "+(end-start)+"\n");
+                bw.write("Trajanje simulacije [ms]: "+(end-start)+"\n");
 
                 bw.write("===Broj kreiranih objekata===\n");
                 bw.write("Djeca: "+ Grad.djeca+"\n");

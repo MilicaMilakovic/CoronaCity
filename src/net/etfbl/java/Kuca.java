@@ -116,7 +116,6 @@ public class Kuca implements Serializable {
 
                 } catch (FileNotFoundException e) {
                     MyLogger.log(Level.SEVERE,e.getMessage(),e);
-                    e.printStackTrace();
                 }
                 ImageView view = new ImageView(img);
                 view.setFitHeight(Grad.imgRatio);
@@ -133,7 +132,6 @@ public class Kuca implements Serializable {
 
                 } catch (FileNotFoundException e) {
                     MyLogger.log(Level.SEVERE,e.getMessage(),e);
-                    e.printStackTrace();
                 }
                 ImageView view = new ImageView(img);
                 view.setFitHeight(Grad.imgRatio);

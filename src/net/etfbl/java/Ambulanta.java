@@ -76,7 +76,8 @@ public class Ambulanta extends Thread implements Serializable {
                 MapaController.matrica[red][kolona].setGraphic(view1);
             } catch (Exception e)
             {
-                e.printStackTrace();
+                MyLogger.log(Level.WARNING,e.getMessage(),e);
+
             }
         } );
 
@@ -222,7 +223,7 @@ public class Ambulanta extends Thread implements Serializable {
                 img = new Image(new FileInputStream(new File("."+File.separator+MapaController.resourcesDir+File.separator+bolnicaIcon)));
             } catch (FileNotFoundException e) {
                 MyLogger.log(Level.SEVERE, e.getMessage(), e);
-                e.printStackTrace();
+
             }
             ImageView view = new ImageView(img);
             view.setFitHeight(Grad.imgRatio);

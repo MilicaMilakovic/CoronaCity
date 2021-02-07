@@ -9,6 +9,8 @@ import javafx.stage.Stage;
 import net.etfbl.java.FileWatcher;
 import net.etfbl.java.MyLogger;
 
+import java.io.File;
+
 public class Main extends Application {
 
     @Override
@@ -16,7 +18,7 @@ public class Main extends Application {
         Parent root = FXMLLoader.load(getClass().getResource("VirusCenter.fxml"));
         primaryStage.setTitle("CoronaCity");
         primaryStage.setScene(new Scene(root, 900, 700));
-        primaryStage.getIcons().add(new Image(getClass().getResourceAsStream( ".\\resources\\icon.png" )));
+        primaryStage.getIcons().add(new Image(getClass().getResourceAsStream( "."+ File.separator+MapaController.resourcesDir+File.separator+MapaController.iconFilename)));
 
         MyLogger.setup();
 
