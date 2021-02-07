@@ -69,7 +69,20 @@ public class StatistikaController implements Initializable {
         try(PrintWriter bw=new PrintWriter(new FileWriter(file)))
         {
             for(int i=0; i<kategorije.length ; i++)
-                bw.write(kategorije[i]+","+vrijednosti[i]+"\n");
+            {
+                if(i==kategorije.length-1)
+                    bw.write(kategorije[i]);
+                else
+                    bw.write(kategorije[i]+",");
+            }
+            bw.write("\n");
+            for(int i=0; i<vrijednosti.length ; i++)
+            {
+                if(i==vrijednosti.length-1)
+                    bw.write(vrijednosti[i]+"");
+                else
+                    bw.write(vrijednosti[i]+",");
+            }
 
         } catch (Exception e)
         {

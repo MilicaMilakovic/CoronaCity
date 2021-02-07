@@ -26,7 +26,7 @@ public class Grad {
     public static final Background DEFAULT_BACKGROUND = new Background(new BackgroundFill(Color.WHITE, null, null));
 
     public static  int size= random.nextInt(16)+15;
-//    public static int size;
+//    public static int size=16;
 
     public static  double ratio= 620/size;
     public static  double imgRatio=550/size;

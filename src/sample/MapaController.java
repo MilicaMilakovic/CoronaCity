@@ -21,6 +21,8 @@ import net.etfbl.java.*;
 import java.io.*;
 import java.net.URL;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 
@@ -310,7 +312,7 @@ public class MapaController implements Initializable {
 
             try(BufferedWriter bw=new BufferedWriter(new FileWriter(file)))
             {
-                bw.write("Trajanje simulacije u [ms]:"+(end-start)+"\n");
+                bw.write("Trajanje simulacije [mm:ss]: "+(end-start)+"\n");
 
                 bw.write("===Broj kreiranih objekata===\n");
                 bw.write("Djeca: "+ Grad.djeca+"\n");
